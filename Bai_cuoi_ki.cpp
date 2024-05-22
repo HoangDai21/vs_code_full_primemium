@@ -1,5 +1,5 @@
 #include<iostream>
-uisng namespace std;
+using namespace std;
 
 struct Ho_Dan {
     char Ma_Ho[5];
@@ -8,9 +8,13 @@ struct Ho_Dan {
     float Muc_Thu_Nhap;
 };
 
-void NhapTT(Ho_Dan*Ho_Dan, int n){
-    for(int i = 0; i < n; i++){
+void NhapTT(Ho_Dan *Ho_Dan){
         cout << "Nhap Ma Ho: ";
-        cin.getline(Ho_Dan->Ho_Dan,5);
-    }
+        cin.getline(Ho_Dan-> Ma_Ho,5);
+        cout << "Nhap Ten Chu Ho: ";
+        cin.getline(Ho_Dan->Ten_Chu_Ho,25);
+        cout << "Nhap So Thanh Vien: ";
+        cin >> Ho_Dan->So_Thanh_Vien;
+        cout << "Nhap Muc Thu Nhap: ";
+        cin >> Ho_Dan->Muc_Thu_Nhap;
 }

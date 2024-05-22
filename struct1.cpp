@@ -25,7 +25,7 @@ void inds(sanpham a[], int n){
         cout << setw(15) << "Ma san pha";
         cout << setw(30) << "Ten san pham";
         cout << setw(15) << "So luong";
-        cout << setw(15) << "Don gia";
+        cout << setw(15) << "Don gia" <<endl;
     for (int i = 0; i < n; i++){
         cout<<setw(15)<<a[i].masp; 
         cout<<setw(30)<<a[i].tensp; 

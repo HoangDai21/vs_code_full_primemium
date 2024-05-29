@@ -3,7 +3,7 @@
 #include <cstring>
 using namespace std;
 
-struct HoDan {
+struct HoDan{
     char maHo[5];
     char tenChuHo[25];
     int soThanhVien;
@@ -15,8 +15,8 @@ void TieuDe() {
          << "|  Ma Ho  |        Ten Chu Ho         | Thanh Vien |  Thu Nhap  |\n"
          << "|_________|___________________________|____________|____________|\n";
 }
-// Hàm nhập thông tin của một hộ dân
-void NhapThongTinHoDan(HoDan *hoDan) {
+// Ham nhap thong tin cua mot ho dan
+void NhapThongTinHoDan(HoDan *hoDan){
     cout << "Nhap ma ho (toi da 4 ky tu): ";
     cin >> hoDan->maHo;
     cin.ignore();
@@ -27,86 +27,86 @@ void NhapThongTinHoDan(HoDan *hoDan) {
     cout << "Nhap muc thu nhap: ";
     cin >> hoDan->mucThuNhap;
 }
-// Hàm nhập danh sách hộ dân
-void NhapDanhSachHoDan(HoDan *danhSach, int n) {
+// Ham nhap danh sach ho dan
+void NhapDanhSachHoDan(HoDan *danhSach, int n){
     for (int i = 0; i < n; i++) {
         cout << "\nNhap thong tin ho dan thu " << i + 1 << ":\n";
         NhapThongTinHoDan(&danhSach[i]);
     }
 }
-// Hàm in thông tin của hộ dân
-void inThongTinHoDan(HoDan hoDan) {
+// Ham in thong tin cua ho dan
+void inThongTinHoDan(HoDan hoDan){
     cout << "|" << setw(9) << hoDan.maHo
          << "|" << setw(27) << hoDan.tenChuHo
          << "|" << setw(12) << hoDan.soThanhVien
          << "|" << setw(12) << hoDan.mucThuNhap << "|\n";
 }
-// Hàm hiển thị danh sách hộ dân
-void hienThiDanhSachHoDan(HoDan *danhSach, int n) {
+// Ham hien thi danh sach ho dan
+void hienThiDanhSachHoDan(HoDan *danhSach, int n){
     TieuDe();
     for (int i = 0; i < n; i++) {
         inThongTinHoDan(danhSach[i]);
     }
     cout << "|_______________________________________________________________|\n";
 }
-// Hàm sửa thông tin của một hộ dân
+// Ham sua thong tin cua mot ho dan
 void suaThongTinHoDan(HoDan &hoDan) {
     cout << "Sua thong tin ho dan co ma ho " << hoDan.maHo << ":\n";
     NhapThongTinHoDan(&hoDan);
 }
-// Hàm sửa thông tin danh sách hộ dân
-void suaDanhSachHoDan(HoDan *danhSach, int n) {
+// Ham sua thong tin danh sach ho dan
+void suaDanhSachHoDan(HoDan *danhSach, int n){
     char maHo[5];
     cout << "Nhap ma ho cua ho dan can sua: ";
     cin >> maHo;
-    for (int i = 0; i < n; i++) {
-        if (strcmp(danhSach[i].maHo, maHo) == 0) {
+    for (int i = 0; i < n; i++){
+        if (strcmp(danhSach[i].maHo, maHo) == 0){
             suaThongTinHoDan(danhSach[i]);
             return;
         }
     }
     cout << "Khong tim thay ho dan co ma ho " << maHo << endl;
 }
-// Hàm chèn thông tin của một hộ dân mới vào danh sách hộ dân
-void chenHoDan(HoDan *&danhSach, int &n, HoDan &hoDan, int viTri) {
-    if (viTri < 0 || viTri > n) {
+// Ham chen thong tin cua mot ho dan moi vao danh sach ho dan
+void chenHoDan(HoDan *&danhSach, int &n, HoDan &hoDan, int viTri){
+    if (viTri < 0 || viTri > n){
         cout << "Vi tri khong hop le!\n";
         return;
     }
     HoDan *danhSachMoi = new HoDan[n + 1];
-    for (int i = 0; i < viTri; i++) {
+    for (int i = 0; i < viTri; i++){
         danhSachMoi[i] = danhSach[i];
     }
     danhSachMoi[viTri] = hoDan;
-    for (int i = viTri; i < n; i++) {
+    for (int i = viTri; i < n; i++){
         danhSachMoi[i + 1] = danhSach[i];
     }
     delete[] danhSach;
     danhSach = danhSachMoi;
     n++;
 }
-// Hàm sắp xếp hộ dân theo thứ tự bảng chữ cái tính theo tên
-void sapXepHoDan(HoDan *danhSach, int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (strcmp(danhSach[i].tenChuHo, danhSach[j].tenChuHo) > 0) {
+// Ham sap xep ho dan theo thu tu bang chu cai tinh theo ten
+void sapXepHoDan(HoDan *danhSach, int n){
+    for (int i = 0; i < n - 1; i++){
+        for (int j = i + 1; j < n; j++){
+            if (strcmp(danhSach[i].tenChuHo, danhSach[j].tenChuHo) > 0){
                 swap(danhSach[i], danhSach[j]);
             }
         }
     }
 }
-// Hàm tính số tiền nộp thuế mà mỗi hộ phải nộp
-void tinhThue(HoDan *danhSach, int n) {
+// Ham tinh so tien nop thue ma moi ho phai nop
+void tinhThue(HoDan *danhSach, int n){
     cout << "\n._____________________________________________.\n"
          << "|     Ten Chu Ho       |         Thue         |\n"
          << "|______________________|______________________|\n";
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++){
         float thue;
-        if (danhSach[i].soThanhVien == 3) {
+        if (danhSach[i].soThanhVien == 3){
             thue = 2.0 * danhSach[i].soThanhVien;
-        } else if (danhSach[i].soThanhVien == 4) {
+        } else if (danhSach[i].soThanhVien == 4){
             thue = 2.5 * danhSach[i].soThanhVien;
-        } else if (danhSach[i].soThanhVien >= 5) {
+        } else if (danhSach[i].soThanhVien >= 5){
             thue = 3.0 * danhSach[i].soThanhVien;
         } else {
             thue = 0.0;
@@ -116,7 +116,6 @@ void tinhThue(HoDan *danhSach, int n) {
     }
     cout << "|______________________|______________________|\n";
 }
-
 void menu() {
     cout << "\n-----------Menu----------\n";
     cout << "1. Nhap danh sach ho dan\n";
@@ -128,11 +127,10 @@ void menu() {
     cout << "0. Thoat\n";
     cout << "Nhap lua chon: ";
 }
-
 int main() {
     int n = 0;
     HoDan *danhSach = new HoDan[100];  // khoi tao mang lon
-    bool DieuKienHD = false;
+    bool DanhSachHoDan = false;
     while (true) {
         menu();
         int luaChon;
@@ -142,32 +140,32 @@ int main() {
         }
         switch (luaChon) {
             case 1:
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     cout << "Danh sach da duoc khoi tao\n";
                 } else {
                     cout << "Nhap so luong ho dan: ";
                     cin >> n;
                     cin.ignore();
                     NhapDanhSachHoDan(danhSach, n);
-                    DieuKienHD = true;
+                    DanhSachHoDan = true;
                 }
                 break;
             case 2:
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     hienThiDanhSachHoDan(danhSach, n);
                 } else {
                     cout << "Danh sach chua duoc khoi tao\n";
                 }
                 break;
             case 3:
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     suaDanhSachHoDan(danhSach, n);
                 } else {
                     cout << "Danh sach chua duoc khoi tao\n";
                 }
                 break;
             case 4: {
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     HoDan hoDanMoi;
                     cout << "\nNhap thong tin ho dan moi:\n";
                     NhapThongTinHoDan(&hoDanMoi);
@@ -181,7 +179,7 @@ int main() {
                 break;
             }
             case 5:
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     sapXepHoDan(danhSach, n);
                     cout << "Danh sach ho dan sau khi sap xep:\n";
                     hienThiDanhSachHoDan(danhSach, n);
@@ -190,7 +188,7 @@ int main() {
                 }
                 break;
             case 6:
-                if (DieuKienHD) {
+                if (DanhSachHoDan){
                     tinhThue(danhSach, n);
                 } else {
                     cout << "Danh sach chua duoc khoi tao\n";

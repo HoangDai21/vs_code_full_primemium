@@ -13,7 +13,14 @@ class Hcn{
 		void nhaptt();
 		void xuattt();
 		void tinh();
-		Hcn(int n, int m);
+		Hcn(){
+			chieu_dai = 999;
+			chieu_rong = 666;
+		}
+		Hcn(float n, float m){
+			chieu_dai = n;
+			chieu_rong = m;
+		}
 };
 void Hcn::nhaptt(){
 	cout << "nhap chieu dai: ";
@@ -27,15 +34,14 @@ void Hcn::xuattt(){
 }
 void Hcn::tinh(){
 	cout << "Chu vi la: " << 2* (chieu_dai + chieu_rong) <<endl;
-	cout << "Dien tich la: "<< chieu_dai * chieu_rong; 
+	cout << "Dien tich la: "<< chieu_dai * chieu_rong<<endl; 
 }
 int main(){
-	Hcn a(10,23);
-	a.nhaptt();
+	Hcn a(2,4);
+	//a.nhaptt();
 	a.xuattt();
 	a.tinh();
-	Hcn b(100,300);
+	Hcn b;
 	b.xuattt();
 	b.tinh();
 }
-

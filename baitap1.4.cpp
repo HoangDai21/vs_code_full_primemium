@@ -133,7 +133,7 @@ void indanhsachhstenHung(CongDan *cd[], int n){
 void indanhsachhsHoNguyrn(CongDan *cd[], int n){
     for (int i = 0; i < n; i++){
         if(cd[i] ->getHoTen() == "Nguyen")
-            Cout << "Ho ten Nguyen co trong danh sach" << endl;
+            cout << "Ho ten Nguyen co trong danh sach" << endl;
             cd[i] -> xuat();
             cout << endl;
     }
@@ -163,6 +163,7 @@ void timkiemgiaoviencosoCCCDnhaptuphim(CongDan *cd[], int n){
         }
     }
 }
+
 int main(){
     CongDan* cd[0];
     int n;

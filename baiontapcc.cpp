@@ -20,4 +20,5 @@ public:
     ~TruongDaiHoc();
     void Nhap();
     void Xuat();
+
 };
